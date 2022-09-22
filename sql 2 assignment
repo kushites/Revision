@@ -1,0 +1,49 @@
+# SQL Assignment - 2
+
+### Submit the notion Link Containing Solutions
+
+### Leetcode
+
+- [https://leetcode.com/problems/big-countries](https://leetcode.com/problems/big-countries)
+
+Ans1: select name,population,area from world where area>=3000000 or population>=25000000;
+
+- [https://leetcode.com/problems/swap-salary/](https://leetcode.com/problems/swap-salary/)
+
+Ans2: update Salary set sex = if(sex='m' , 'f','m');
+
+- [https://leetcode.com/problems/not-boring-movies/](https://leetcode.com/problems/not-boring-movies/)
+
+Ans3: select * from cinema where description!="boring" and mod(id,2)=1 order by rating desc;
+
+- [https://leetcode.com/problems/duplicate-emails/](https://leetcode.com/problems/duplicate-emails/)
+
+Ans4: select Email from person group by email having count(email)>1;
+
+- [https://leetcode.com/problems/combine-two-tables/](https://leetcode.com/problems/combine-two-tables/)
+
+Ans5: select p.firstname,p.lastname,a.city,a.state from person p left join address a on p.personid=a.personid;
+
+- [https://leetcode.com/problems/employees-earning-more-than-their-managers/](https://leetcode.com/problems/employees-earning-more-than-their-managers/)
+
+Ans6: select [e.name](http://e.name/) Employee from Employee as e, Employee as m where [e.managerid=m.id](http://e.managerid%3Dm.id/) and e.salary>m.salary;
+
+- [https://leetcode.com/problems/customers-who-never-order/](https://leetcode.com/problems/customers-who-never-order/)
+
+Ans7: select name as Customers from customers where [customers.id](http://customers.id/) not in(select customerid from orders);
+
+- [https://leetcode.com/problems/delete-duplicate-emails](https://leetcode.com/problems/delete-duplicate-emails)
+
+Ans8: delete p1 from person p1, person p2 where p1.email=p2.email and [p1.id](http://p1.id/)>[p2.id](http://p2.id/);
+
+- [https://leetcode.com/problems/rising-temperature](https://leetcode.com/problems/rising-temperature)
+
+Ans9: select [w1.id](http://w1.id/) as id from weather as w1 join weather as w2 on Datediff(w1.recorddate,w2.recorddate)=1 and w1.temperature>w2.temperature;
+
+- [https://leetcode.com/problems/classes-more-than-5-students](https://leetcode.com/problems/classes-more-than-5-students)
+
+Ans10:  select class from courses group by class having count(class)>=5;
+
+- [https://leetcode.com/problems/second-highest-salary/](https://leetcode.com/problems/second-highest-salary/)
+
+Ans11: select Max(salary) as SecondHighestSalary from employee where salary<(select max(salary) from employee);

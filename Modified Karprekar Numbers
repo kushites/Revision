@@ -1,0 +1,91 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+class Result {
+
+    /*
+     * Complete the 'kaprekarNumbers' function below.
+     *
+     * The function accepts following parameters:
+     *  1. INTEGER p
+     *  2. INTEGER q
+     */
+
+    public static void kaprekarNumbers(int p, int q) {
+    // Write your code here
+    boolean v= false;
+        for(long i=p; i<=q; i++){
+            if(sidig(i)){
+                v=true;
+                System.out.print(i+" ");
+            }
+        }
+        if(v==false){
+            System.out.println("INVALID RANGE");
+        }
+    }
+    
+    public static boolean sidig(long n){
+        if(n==1||n==9){
+            return true;
+        }
+        long t = n*n;
+        
+        String[] num = Long.toString(t).split("");
+        if(num.length==1){
+            return false;
+        }
+       
+            String sum="";
+            String sum1="";
+                
+           int o =(int) Math.ceil(num.length/2);
+            for(int i=0; i<o; i++){
+                sum+=num[i];
+            }
+            
+            long num1 = Long.parseLong(sum);
+        //    System.out.println(sum+" "+sum1);
+            for(int j=o; j<num.length; j++){
+                    sum1+=num[j];
+            
+             }
+             
+             long num2 = Long.parseLong(sum1);
+             
+            //  System.out.println(num1+" "+num2);
+            //  System.out.println(sum+" "+sum1+" "+n);
+            
+             
+            if((num1+num2)==n&&num2!=0&&num1!=0){
+            
+                return true;
+            }
+          
+        return false;
+    }
+
+}
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+
+        int p = Integer.parseInt(bufferedReader.readLine().trim());
+
+        int q = Integer.parseInt(bufferedReader.readLine().trim());
+
+        Result.kaprekarNumbers(p, q);
+
+        bufferedReader.close();
+    }
+}
